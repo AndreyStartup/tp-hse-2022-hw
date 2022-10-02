@@ -93,7 +93,7 @@ while True:
                 array.append(contact)
         print('Файл загружен')
         continue
-    elif Option == 2 or 3:
+    elif Option == 2 or Option == 3:
         search = input('Введите данные в поисковик (Если нужны контакты, в которых не хватает данных введите "-"): \n')
         search_result = search.split()
         if len(search_result) == 1:
