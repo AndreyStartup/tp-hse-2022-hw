@@ -10,34 +10,35 @@ class Contact:
     def get_info(self):
         return f'{self.last_name} {self.first_name} {self.middle_name} {self.number} {self.email}'
 
-def find(*data):
+def find_contact(data):
     for i in range(len(array)):
         count = 0
         global id
-        for x in data:
-            if len(data) == 1:
+        search_array = data.split()
+        for x in search_array:
+            if len(search_array) == 1:
                 if x in array[i].get_info().split():
                     print(array[i].get_info())
                     id = i
-            if len(data) == 2:
+            if len(search_array) == 2:
                 if x in array[i].get_info().split():
                     count +=1
                     if count == 2:
                         print(array[i].get_info())
                         id = i
-            if len(data) == 3:
+            if len(search_array) == 3:
                 if x in array[i].get_info().split():
                     count +=1
                     if count == 3:
                         print(array[i].get_info())
                         id = i
-            if len(data) == 4:
+            if len(search_array) == 4:
                 if x in array[i].get_info().split():
                     count +=1
                     if count == 4:
                         print(array[i].get_info())
                         id = i
-            if len(data) == 5:
+            if len(search_array) == 5:
                 if x in array[i].get_info().split():
                     count +=1
                     if count == 5:
@@ -52,62 +53,52 @@ while True:
     Option = int(input('Варианты опций:\n 1-Файл \n 2-Поиск \n 3-Изменить \n 4-Выход \n '))
 
     if Option == 1:
-        file = input('Название файла: ')
-        with open(file, encoding='utf-8') as f:
-            for line in f:
-                p = str(line)
-                t = p.replace(',', "")
-                r = t.split()
-                print(r)
+        Filename = input('Название файла: ')
+        with open(Filename, encoding='utf-8') as file:
+            for line in file:
+                str_line = str(line)
+                commas = str_line.replace(',', "")
+                full_contact_data = commas.split()
+                print(full_contact_data)
                 count = 0
-                fn = '-'
-                mn = '-'
-                nb = '-'
-                em = '-'
-                for i in r:
+                first_name = '-'
+                middle_name = '-'
+                number = '-'
+                email = '-'
+                for i in full_contact_data:
                     if count == 4:
-                        em = r[4]
+                        email = full_contact_data[4]
                     elif count == 3:
                         if '+' in i:
-                            nb = r[3]
+                            number = full_contact_data[3]
                         elif '@' in i:
-                            em = r[3]
+                            email = full_contact_data[3]
                     elif count == 2:
                         if '+' in i:
-                            nb = r[2]
+                            number = full_contact_data[2]
                         elif '@' in i:
-                            em = r[2]
+                            email = full_contact_data[2]
                         else:
-                            mn = r[2]
+                            middle_name = full_contact_data[2]
                     elif count == 1:
                         if '+' in i:
-                            nb = r[1]
+                            number = full_contact_data[1]
                         elif '@' in i:
-                            em = r[1]
+                            email = full_contact_data[1]
                         else:
-                            fn = r[1]
+                            first_name = full_contact_data[1]
                     else:
-                        ln = r[0]
+                        last_name = full_contact_data[0]
                     count += 1
-                contact = Contact(ln, fn, mn, nb, em)
+                contact = Contact(last_name, first_name, middle_name, number, email)
                 array.append(contact)
         print('Файл загружен')
         continue
     elif Option == 2 or Option == 3:
         search = input('Введите данные в поисковик (Если нужны контакты, в которых не хватает данных введите "-"): \n')
-        search_result = search.split()
-        if len(search_result) == 1:
-            result = find(search_result[0])
-        if len(search_result) == 2:
-            result = find(search_result[0], search_result[1])
-        if len(search_result) == 3:
-            result = find(search_result[0], search_result[1], search_result[2])
-        if len(search_result) == 4:
-            result = find(search_result[0], search_result[1], search_result[2],search_result[3])
-        if len(search_result) == 5:
-            result =  find(search_result[0], search_result[1], search_result[2], search_result[3], search_result[4])
+        find_contact(search)
         if Option == 3:
-            Variants = int(input('Что хотите изменить:\n 1-Фамилию\n 2-Имя\n 3-Отчество\n 4-Номер\n 5-Почту\n '))
+            Variants = int(input('Что хотите изменить:\n 1-Фамилию\n 2-Имя\n 3-Отчество\n 4-Номер\n 5-Почту\n 6-Отмена\n '))
             if Variants == 1:
                 array[id].last_name = input('Введите фамилию: ')
             elif Variants == 2:
@@ -118,6 +109,8 @@ while True:
                 array[id].number = input("Введите номер: ")
             elif Variants == 5:
                 array[id].email = input("Введите почту: ")
+            elif Variants == 6:
+                continue
 
 
     elif Option == 4:
