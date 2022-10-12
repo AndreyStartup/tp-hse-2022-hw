@@ -11,7 +11,7 @@ jobs:
       - name: Installing pytest
         run: pip install pytest
       - name: Testing
-        run: pytest -v --ff --tb=no
+        run: pytest -v --ff --tb=no --junitxml=path
       - name: Telegram Notifications (success)
         if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
@@ -25,5 +25,6 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          args: Тест провален
+          message: Тест провален
+          document: ${{ path }}
 
