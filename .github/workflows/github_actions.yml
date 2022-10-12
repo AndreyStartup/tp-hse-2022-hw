@@ -11,7 +11,7 @@ jobs:
       - name: Installing pytest
         run: pip install pytest
       - name: Testing
-        run: pytest -v --ff --tb=no --resultlog=path
+        run: pytest -v --ff --tb=no --rootdir=path
       - name: Telegram Notifications (success)
         if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
