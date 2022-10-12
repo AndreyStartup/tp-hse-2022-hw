@@ -10,16 +10,18 @@ jobs:
         uses: actions/checkout@v3
       - name: Installing pytest
         run: pip install pytest
+      - name: Collecting
+        run: pytest --collect-only
       - name: Testing
         run: pytest
-      - name: The job has failed
+      - name: Telegram Notifications (success)
         if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           args: Все ок
-      - name: Telegram Notifications
+      - name: Telegram Notifications (failure)
         if: ${{ failure() }}
         uses: "appleboy/telegram-action@master"
         with:
