@@ -1,6 +1,6 @@
 name: For_My_Mini_Project
 
-on: [push, workflow_dispatch]
+on: [push]
 jobs:
   For-Project:
     runs-on: ubuntu-latest
@@ -12,10 +12,18 @@ jobs:
         run: pip install pytest
       - name: Testing
         run: pytest
-      - name: Telegram Notifications
+      - name: The job has failed
+        if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           args: Все ок
+      - name: Telegram Notifications
+        if: ${{ failure() }}
+        uses: "appleboy/telegram-action@master"
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: Тест провален
 
