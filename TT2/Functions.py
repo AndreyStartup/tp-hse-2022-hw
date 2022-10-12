@@ -45,9 +45,9 @@ def _mult(array):
 def speed(filename):
     start_time = time.time()
     array = read_from_file(filename)
-    print("Минимальное:", _min(array))
-    print("Максимальное: ", _max(array))
-    print("Сумма:", _sum(array))
-    print("Произведение:", _mult(array))
+    _min(array)
+    _max(array)
+    _sum(array)
+    _mult(array)
     stop_time = time.time()
     print("Время работы:", stop_time - start_time, "сек")
