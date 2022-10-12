@@ -26,5 +26,5 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: Тест провален
-          document: ${{ path }}
+          document: ${{ junitxml }}
 
