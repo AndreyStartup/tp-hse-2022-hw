@@ -11,7 +11,7 @@ jobs:
       - name: Installing pytest
         run: pip install pytest
       - name: Collecting
-        run: pytest --collect-only
+        run: pytest -v
       - name: Testing
         run: pytest
       - name: Telegram Notifications (success)
