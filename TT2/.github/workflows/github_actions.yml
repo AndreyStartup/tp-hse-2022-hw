@@ -1,0 +1,15 @@
+name: For_My_Mini_Project
+
+on: [push]
+jobs:
+  For-Project:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Installing pytest
+        run: pip install pytest
+      - name: Testing
+        run: pytest
+
