@@ -19,9 +19,6 @@ jobs:
         run: pip install pytest
       - name: Testing
         run: pytest -v --ff --tb=no
-      - name: Run
-        if: ${{ failure() }}
-        run: echo ${{ job.event }}
       - name: Telegram Notifications (success)
         if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
@@ -35,5 +32,6 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          args: Все плохо
+          args:
+            run: echo ${{ jobs.event }}
 
