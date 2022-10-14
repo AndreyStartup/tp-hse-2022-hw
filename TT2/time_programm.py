@@ -34,7 +34,7 @@ def test_time_programm():
                 Functions.speed('test_file.txt')
                 count += 1
             elif count == 3:
-                for i in range(1, 10):
+                for i in range(1, 10000):
                     number = random.randint(1, 100)
                     fp.write(f'{number} ')
                 fp.seek(0)
@@ -43,7 +43,7 @@ def test_time_programm():
                 Functions.speed('test_file.txt')
                 count += 1
             elif count == 4:
-                for i in range(1, 100):
+                for i in range(1, 100000):
                     number = random.randint(1, 100)
                     fp.write(f'{number} ')
                 fp.seek(0)
@@ -52,7 +52,7 @@ def test_time_programm():
                 Functions.speed('test_file.txt')
                 count += 1
             elif count == 5:
-                for i in range(1, 50):
+                for i in range(1, 500000):
                     number = random.randint(1, 100)
                     fp.write(f'{number} ')
                 fp.seek(0)
@@ -61,7 +61,7 @@ def test_time_programm():
                 Functions.speed('test_file.txt')
                 count += 1
             elif count == 6:
-                for i in range(1, 10):
+                for i in range(1, 1000000):
                     number = random.randint(1, 100)
                     fp.write(f'{number} ')
                 fp.seek(0)
