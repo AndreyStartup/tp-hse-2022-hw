@@ -1,6 +1,14 @@
 name: For_My_Mini_Project
 
-on: [push]
+on:
+  push:
+    branches: [Develop-2]
+  workflow_dispatch:
+    branches: [Develop-2]
+
+
+
+
 jobs:
   For-Project:
     runs-on: ubuntu-latest
