@@ -1,6 +1,6 @@
 name: For_My_Mini_Project
 
-on: [push, workflow_dispatch]
+on: [push]
 jobs:
   For-Project:
     runs-on: ubuntu-latest
@@ -11,5 +11,20 @@ jobs:
       - name: Installing pytest
         run: pip install pytest
       - name: Testing
-        run: pytest
+        run: pytest -v --ff --tb=no --rootdir=path
+      - name: Telegram Notifications (success)
+        if: ${{ success() }}
+        uses: "appleboy/telegram-action@master"
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: Все ок
+      - name: Telegram Notifications (failure)
+        if: ${{ failure() }}
+        uses: "appleboy/telegram-action@master"
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: Тест провален
+          document: /home/runner/work/tp-hse-2022-hw/tp-hse-2022-hw/path
 
