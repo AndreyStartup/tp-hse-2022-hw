@@ -32,6 +32,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          args:
-            run: echo ${{ jobs.event }}
+          message: echo ${{ jobs.event }}
 
