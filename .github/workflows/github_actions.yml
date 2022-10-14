@@ -11,7 +11,7 @@ jobs:
       - name: Installing pytest
         run: pip install pytest
       - name: Testing
-        run: pytest -v --ff --tb=no --rootdir=path
+        run: pytest -v --ff --tb=no
       - name: Telegram Notifications (success)
         if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
@@ -25,6 +25,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Тест провален
-          document: /home/runner/work/tp-hse-2022-hw/tp-hse-2022-hw/path
+          message: Тест провален \n Проваленные тесты ${{ jobs.For-Project.steps.id }}
 
