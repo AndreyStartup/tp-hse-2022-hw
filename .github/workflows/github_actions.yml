@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Installing pytest
         run: pip install pytest
-      - name: Testing
+      - id: Testing
         run: pytest -v --ff --tb=no
       - name: Telegram Notifications (success)
         if: ${{ success() }}
@@ -32,5 +32,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: echo ${{ job.event }}
+          message: echo ${{ steps.Testing.event }}
 
