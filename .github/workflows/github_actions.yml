@@ -1,8 +1,6 @@
 name: For_My_Mini_Project
 
 on:
-  push:
-    branches: [Develop-2]
   workflow_dispatch:
     inputs:
       logLevel:
