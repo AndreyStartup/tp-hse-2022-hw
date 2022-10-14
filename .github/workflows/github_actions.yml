@@ -4,7 +4,13 @@ on:
   push:
     branches: [Develop-2]
   workflow_dispatch:
-    branches: [Develop-2]
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags'
 
 
 
