@@ -32,6 +32,6 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Тест провален
+          message: Тест провален(
           document: results.txt
 
