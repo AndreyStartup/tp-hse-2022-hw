@@ -20,6 +20,7 @@ jobs:
       - name: Testing
         run: pytest -v --ff --tb=no
       - name: Run
+        if: ${{ failure() }}
         run: echo ${{ steps.event }}
       - name: Telegram Notifications (success)
         if: ${{ success() }}
