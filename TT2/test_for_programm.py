@@ -8,7 +8,7 @@ import Functions
                                             ([12346, 695, -123, 38743], 51661),
                                             ([85123, -543680, 272, 12],  -458273)])
 def test_sum(array, expected):
-    assert Functions._sum(array) == 1
+    assert Functions._sum(array) == expected
 
 @pytest.mark.parametrize("array,expected", [([0, 3, -4, -5, -6], 0),
                                             ([100023, 36247, 5555, -3249], -65434338853755795),
