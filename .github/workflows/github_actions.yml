@@ -1,0 +1,39 @@
+name: For_My_Mini_Project
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [Develop-2]
+
+
+jobs:
+  For-Project:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        
+      - name: Installing pytest
+        run: pip install pytest
+        
+      - id: Testing
+        run: pytest --lf --tb=no > failed_tests.txt
+        
+      - name: Telegram Notifications (success)
+        if: ${{ success() }}
+        uses: "appleboy/telegram-action@master"
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: Все ок
+          
+      - name: Telegram Notifications (failure)
+        if: ${{ failure() }}
+        uses: "appleboy/telegram-action@master"
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: Тест провален(
+          document: failed_tests.txt
+
