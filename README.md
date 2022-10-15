@@ -12,8 +12,13 @@ Status of last Deployment:
 https://t.me/+0bvEH6LcL1I5NTQy 
 
 В папке TT2:
+
 Functions.py - функции из задания
+
 Programm.py - базовая интерпретация проги
+
 test_for_programm.py - тесты из задания вместе с дополнительным(доп.тест - на чтение из файла)
+
 time_programm.py - данные по скорости работы проги пр увел входных данных
+
 test_file.txt - файлик необходимый для тестов
