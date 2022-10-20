@@ -3,7 +3,9 @@ name: For_My_Mini_Project
 on:
   workflow_dispatch: {}
   push:
-    branches: [Develop-2]
+    branches: [main, Develop-2]
+  pull_request:
+    branches: [main, Develop-2]
 
 
 jobs:
