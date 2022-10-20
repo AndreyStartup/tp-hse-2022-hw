@@ -8,7 +8,6 @@ on:
     branches: [main, Develop-2]
 
 
-
 jobs:
   For-Project:
     runs-on: ubuntu-latest
@@ -16,10 +15,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+        
       - name: Installing pytest
         run: pip install pytest
+        
       - id: Testing
         run: pytest --lf --tb=no > failed_tests.txt
+        
       - name: Telegram Notifications (success)
         if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
@@ -27,6 +29,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           args: Все ок
+          
       - name: Telegram Notifications (failure)
         if: ${{ failure() }}
         uses: "appleboy/telegram-action@master"
